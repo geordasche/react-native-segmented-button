@@ -55,6 +55,8 @@ export default class SegmentedButton extends Component {
     }
     static propTypes = {
         items: PropTypes.array.isRequired,
+        onSegmentBtnPress: PropTypes.func,
+        onSegmentBtnPressedAgain: PropTypes.func,  // not renaming onSegmentBtnPress to a better name, like onSegmentBtnChanged, to avoid breaking change
     };
     constructor(props) {
         super(props);
@@ -137,6 +139,10 @@ export default class SegmentedButton extends Component {
         thiz.props.onSegmentBtnPress(e, index);
     }
 
+    _onSegmentBtnPressedAgain(e, index) {
+      !!this.props.onSegmentBtnPressedAgain && this.props.onSegmentBtnPressedAgain(e, index);
+    }
+
     render() {
         var thiz = this;
         var navItems = thiz.props.items;
@@ -154,7 +160,9 @@ export default class SegmentedButton extends Component {
             }
             if (activeItemIndex == index) {
                 return (
-                    <TouchableOpacity style={[styles.navItem,{marginBottom:1.5}]} key={key} ref={index}>
+                    <TouchableOpacity style={[styles.navItem,{marginBottom:1.5}]} key={key} ref={index} onPress={(e)=>{
+                        thiz._onSegmentBtnPressedAgain(e,index);
+                    }}>
                         <Text style={[styles.navItemText,{color: thiz.props.activeTinyColor}]}>{label}</Text>
                     </TouchableOpacity>
                 );

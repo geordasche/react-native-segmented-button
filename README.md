@@ -2,14 +2,10 @@
 react native scrolled segmented button
 
 ##install
-npm install react-native-segmented-button --save
-
-or
-
-npm install react-native-segmented-button@git@github.com:bestv2/react-native-segmented-button.git --save
+npm install react-native-segmented-button@git@github.com:geordasche/react-native-segmented-button.git#develop --save
 
 ##screenshots
-![image](https://github.com/bestv2/react-native-segmented-button/blob/master/screenshots/1.gif?raw=true)
+![image](https://github.com/geordasche/react-native-segmented-button/blob/master/screenshots/1.gif?raw=true)
 
 ##example
      <SegmentedButton
@@ -18,4 +14,5 @@ npm install react-native-segmented-button@git@github.com:bestv2/react-native-seg
                 activeTinyColor="#f62323"
                 items={['Segmented1',{text:'Seg2'},{text:'SegmentedButton3'},{text:'Seg Btn4'},{text:'Btn5'},]}
                 onSegmentBtnPress={(btn,index)=>{}}
+                onSegmentBtnPressedAgain={(btn,index)=>{}}
             />
